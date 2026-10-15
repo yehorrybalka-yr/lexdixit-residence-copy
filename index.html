@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lex Dixit — Оформление ВНЖ в Испании</title>
+    
+    <!-- Подключение шрифта -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Стили для международного ввода телефона -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '141973476472517');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=141973476472517&v=news&ev=PageView"/></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+        :root {
+            --color-bg: #FAFAFA;
+            --color-card: #FFFFFF;
+            --color-text-main: #111111;
+            --color-text-muted: #666666;
+            --color-accent: #E30613;
+            --color-accent-hover: #B8050F;
+            --color-border: #E5E5E5;
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--color-card);
+            border-bottom: 1px solid var(--color-border);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: var(--color-accent);
+        }
+        .logo-sub {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-text-muted);
+            margin-top: 2px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background: var(--color-card);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            position: relative;
+            border: 1px solid var(--color-border);
+        }
+
+        /* Прогресс бар */
+        .progress-wrapper {
+            margin-bottom: 30px;
+        }
+        .progress-text {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .progress-bar {
+            background: var(--color-border);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: var(--color-accent);
+            height: 100%;
+            width: 20%;
+            transition: width 0.4s ease;
+        }
+
+        /* Шаги квиза */
+        .quiz-step {
+            display: none;
+        }
+        .quiz-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        /* Варианты ответов */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .option-card {
+            border: 1px solid var(--color-border);
+            padding: 16px 20px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            background: var(--color-card);
+            line-height: 1.4;
+        }
+
+        .option-card:hover {
+            border-color: var(--color-text-main);
+            background: #F9F9F9;
+        }
+
+        .option-card.selected {
+            border-color: var(--color-accent);
+            background: rgba(227, 6, 19, 0.03);
+            color: var(--color-accent);
+        }
+
+        .option-card input[type="radio"] {
+            display: none;
+        }
+
+        /* Поля ввода (Финальный шаг) */
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--color-text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: var(--color-text-main);
+        }
+
+        /* Кастомизация плагина телефона */
+        .iti { width: 100%; }
+        .iti__reveal { width: 100%; }
+
+        /* Кнопки навигации */
+        .navigation-btns {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn-next {
+            background-color: var(--color-text-main);
+            color: #FFFFFF;
+            flex: 1;
+        }
+
+        .btn-next:hover {
+            background-color: #333333;
+        }
+
+        .btn-prev {
+            background-color: transparent;
+            color: var(--color-text-muted);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-prev:hover {
+            background-color: #F0F0F0;
+            color: var(--color-text-main);
+        }
+
+        .btn:disabled {
+            background-color: var(--color-border);
+            color: var(--color-text-muted);
+            cursor: not-allowed;
+        }
+
+        /* Страница благодарности */
+        .success-message {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .success-icon {
+            font-size: 48px;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+        }
+
+        .error-text {
+            color: var(--color-accent);
+            font-size: 13px;
+            margin-top: 6px;
+            display: none;
+        }
+
+        /* Социальные кнопки (Мессенджеры) */
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 30px;
+            align-items: center;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 320px;
+            padding: 14px 28px;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 16px;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .social-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-telegram {
+            background-color: #24A1DE;
+            box-shadow: 0 4px 12px rgba(36, 161, 222, 0.25);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 4px 12px rgba(220, 39, 67, 0.25);
+        }
+
+        @media(max-width: 480px) {
+            .quiz-container {
+                padding: 24px 16px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            .social-btn {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">LEX <span>DIXIT</span></div>
+        <div class="logo-sub">tax & legal</div>
+    </header>
+
+    <main>
+        <div class="quiz-container">
+            
+            <!-- Прогресс -->
+            <div class="progress-wrapper" id="progressWrapper">
+                <div class="progress-text">
+                    <span id="stepIndicator">Вопрос 1 из 5</span>
+                    <span id="percentIndicator">20%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <form id="quizForm" onsubmit="submitQuiz(event)">
+                
+                <!-- Шаг 1 -->
+                <div class="quiz-step active" data-step="1">
+                    <h2>1. На каком статусе вы проживаете в Испании?</h2>
+                    <div class="options-list">
+                        <label class="option-card">
+                            <input type="radio" name="q1" value="временная защита">
+                            Временная защита
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="q1" value="другой статус">
+                            Другой статус
+                        </label>
+                    </div>
+                    <div class="navigation-btns">
+                        <div></div>
+                        <button type="button" class="btn btn-next" onclick="nextStep()">Далее</button>
+                    </div>
+                </div>
+
+                <!-- Шаг 2 -->
+                <div class="quiz-step" data-step="2">
+                    <h2>2. Какая у вас сейчас ситуация с работой?</h2>
+                    <div class="options-list">
+                        <label class="option-card">
+                            <input type="radio" name="q2" value="Официально работаю по трудовому договору">
+                            Официально работаю по трудовому договору
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="q2" value="Зарегистрирован(а) как autónomo">
+                            Зарегистрирован(а) как autónomo
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="q2" value="Сейчас официально не работаю">
+                            Сейчас официально не работаю
+                        </label>
+                    </div>
+                    <div class="navigation-btns">
+                        <button type="button" class="btn btn-prev" onclick="prevStep()">Назад</button>
+                        <button type="button" class="btn btn-next" onclick="nextStep()">Далее</button>
+                    </div>
+                </div>
+
+                <!-- Шаг 3 -->
+                <div class="quiz-step" data-step="3">
+                    <h2>3. Как долго вы живёте в Испании в статусе временной защиты?</h2>
+                    <div class="options-list">
+                        <label class="option-card">
+                            <input type="radio" name="q3" value="меньше 1 года">
+                            Меньше 1 года
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="q3" value="более 1 года">
+                            Более 1 года
+                        </label>
+                    </div>
+                    <div class="navigation-btns">
+                        <button type="button" class="btn btn-prev" onclick="prevStep()">Назад</button>
+                        <button type="button" class="btn btn-next" onclick="nextStep()">Далее</button>
+                    </div>
+                </div>
+
+                <!-- Шаг 4 -->
+                <div class="quiz-step" data-step="4">
+                    <h2>4. Если возможность перехода на ВНЖ подтвердится, какой формат вам подходит?</h2>
+                    <div class="options-list">
+                        <label class="option-card">
+                            <input type="radio" name="q4" value="Готов(а) начать оформление в ближайшее время">
+                            Готов(а) начать оформление в ближайшее время
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="q4" value="Хочу сначала узнать этапы и стоимость сопровождения">
+                            Хочу сначала узнать этапы и стоимость сопровождения
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="q4" value="Планирую заняться этим в течение месяца">
+                            Планирую заняться этим в течение месяца
+                        </label>
+                        <label class="option-card">
+                            <input type="radio" name="q4" value="Хочу оформить всё самостоятельно">
+                            Хочу оформить всё самостоятельно
+                        </label>
+                    </div>
+                    <div class="navigation-btns">
+                        <button type="button" class="btn btn-prev" onclick="prevStep()">Назад</button>
+                        <button type="button" class="btn btn-next" onclick="nextStep()">Далее</button>
+                    </div>
+                </div>
+
+                <!-- Шаг 5 (Контактные данные) -->
+                <div class="quiz-step" data-step="5">
+                    <h2>5. Получить анализ ситуации</h2>
+                    
+                    <div class="form-group">
+                        <label for="userName">Ваше имя</label>
+                        <input type="text" id="userName" name="name" class="form-control" placeholder="Александр" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userPhone">Номер телефона</label>
+                        <input type="tel" id="userPhone" name="phone" class="form-control" required>
+                        <div class="error-text" id="phoneError">Пожалуйста, введите корректный номер телефона</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userTelegram">Telegram (опционально)</label>
+                        <input type="text" id="userTelegram" name="telegram" class="form-control" placeholder="@username">
+                    </div>
+
+                    <div class="navigation-btns">
+                        <button type="button" class="btn btn-prev" onclick="prevStep()">Назад</button>
+                        <button type="submit" class="btn btn-next" style="background-color: var(--color-accent);">Отправить данные</button>
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- Окно успеха -->
+            <div class="success-message" id="successBlock" style="display: none;">
+                <div class="success-icon">✓</div>
+                <h2>Данные успешно отправлены!</h2>
+                <p style="color: var(--color-text-muted); line-height: 1.5;">Адвокаты Lex Dixit изучают вашу ситуацию. Мы свяжемся с вами в ближайшее время, чтобы обсудить возможности перехода на ВНЖ.</p>
+                
+                <div class="social-buttons">
+                    <a href="https://t.me/+34685120867" target="_blank" class="social-btn btn-telegram" onclick="trackContactEvent()">
+                        Написать в Telegram
+                    </a>
+                    <a href="https://wa.me/34685120867" target="_blank" class="social-btn btn-whatsapp" onclick="trackContactEvent()">
+                        Написать в WhatsApp
+                    </a>
+                    <a href="https://www.instagram.com/lexdixit/" target="_blank" class="social-btn btn-instagram" onclick="trackContactEvent()">
+                        Перейти в Instagram
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Скрипты для маски телефона -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"></script>
+    
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+        let iti;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const phoneInput = document.querySelector("#userPhone");
+            iti = window.intlTelInput(phoneInput, {
+                preferredCountries: ["es", "pl", "ua"],
+                separateDialCode: true,
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+            });
+
+            const options = document.querySelectorAll('.option-card input[type="radio"]');
+            options.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const parentList = this.closest('.options-list');
+                    parentList.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+                    
+                    if(this.checked) {
+                        this.closest('.option-card').classList.add('selected');
+                        
+                        setTimeout(() => {
+                            if(currentStep < totalSteps - 1) { 
+                                nextStep();
+                            }
+                        }, 350);
+                    }
+                });
+            });
+        });
+
+        function updateProgress() {
+            const percent = Math.round((currentStep / totalSteps) * 100);
+            document.getElementById('stepIndicator').innerText = `Вопрос ${currentStep} из ${totalSteps}`;
+            document.getElementById('percentIndicator').innerText = `${percent}%`;
+            document.getElementById('progressFill').style.width = `${percent}%`;
+        }
+
+        function nextStep() {
+            const currentStepEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
+            
+            const radioButtons = currentStepEl.querySelectorAll('input[type="radio"]');
+            if (radioButtons.length > 0) {
+                const checkedRadio = currentStepEl.querySelector('input[type="radio"]:checked');
+                if (!checkedRadio) {
+                    alert("Пожалуйста, выберите один из вариантов.");
+                    return;
+                }
+            }
+
+            if (currentStep < totalSteps) {
+                currentStepEl.classList.remove('active');
+                currentStep++;
+                document.querySelector(`.quiz-step[data-step="${currentStep}"]`).classList.add('active');
+                updateProgress();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.querySelector(`.quiz-step[data-step="${currentStep}"]`).classList.remove('active');
+                currentStep--;
+                document.querySelector(`.quiz-step[data-step="${currentStep}"]`).classList.add('active');
+                updateProgress();
+            }
+        }
+
+        // Функция для отслеживания кликов по мессенджерам в Meta Pixel
+        function trackContactEvent() {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Contact');
+                console.log('Событие Contact отправлено в Meta Pixel');
+            }
+        }
+
+        function submitQuiz(event) {
+            event.preventDefault();
+            
+            const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwlvljZMHbd_nUUwz_mypL5np6xX8bOtBdtafYIULClMqsZKWAl1hf8oOSfo-sjFYKumg/exec';
+            const errorText = document.getElementById('phoneError');
+            
+            if (!iti.isValidNumber()) {
+                errorText.style.display = 'block';
+                document.getElementById('userPhone').style.borderColor = 'var(--color-accent)';
+                return;
+            } else {
+                errorText.style.display = 'none';
+                document.getElementById('userPhone').style.borderColor = 'var(--color-border)';
+            }
+
+            const formData = new FormData(document.getElementById('quizForm'));
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            data['phone_full'] = iti.getNumber();
+            data['quiz_tag'] = 'residence'; 
+
+            console.log('Отправка данных:', data);
+
+            fetch(googleScriptUrl, {
+                method: 'POST',
+                mode: 'no-cors', 
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                console.log('Лид успешно отправлен');
+            })
+            .catch(error => {
+                console.error('Ошибка отправки в таблицу:', error);
+            });
+
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Residence Quiz Submission',
+                    status: 'Completed',
+                    traffic_source: 'Residence Optimization Quiz'
+                });
+            }
+
+            document.getElementById('quizForm').style.display = 'none';
+            document.getElementById('progressWrapper').style.display = 'none';
+            document.getElementById('successBlock').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
